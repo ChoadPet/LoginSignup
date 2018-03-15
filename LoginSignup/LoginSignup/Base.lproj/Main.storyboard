@@ -63,6 +63,13 @@
                                     <action selector="loginPressed:" destination="UrD-Xd-L8N" eventType="touchUpInside" id="kKj-0C-sWY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4c-3V-7vL">
+                                <rect key="frame" x="48" y="251" width="279" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84957909399999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -76,12 +83,54 @@
                     <connections>
                         <outlet property="backgroundImage" destination="7ai-OG-IXR" id="9gX-b8-w12"/>
                         <outlet property="emailTextField" destination="7if-P6-Z9g" id="orU-Cp-uO0"/>
+                        <outlet property="errorLbl" destination="s4c-3V-7vL" id="6ki-ey-NSO"/>
                         <outlet property="passwordTextField" destination="gga-SZ-is5" id="Umd-ds-qvd"/>
+                        <segue destination="b48-h5-37K" kind="show" identifier="fromLogin" id="efu-to-nB4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJS-qD-xkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1237.5999999999999" y="15.742128935532236"/>
+            <point key="canvasLocation" x="1237.5999999999999" y="-152.47376311844079"/>
+        </scene>
+        <!--Text View Controller-->
+        <scene sceneID="ECM-h3-Civ">
+            <objects>
+                <viewController id="b48-h5-37K" customClass="TextViewController" customModule="LoginSignup" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPj-om-ixh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZhT-CW-iMe">
+                                <rect key="frame" x="-0.5" y="32" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vri-vA-Bs8" customClass="TextOutputTableViewCell" customModule="LoginSignup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vri-vA-Bs8" id="AYa-dc-fwf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZhT-CW-iMe" firstAttribute="width" secondItem="MPj-om-ixh" secondAttribute="width" id="Lia-ih-Sms"/>
+                            <constraint firstItem="ZhT-CW-iMe" firstAttribute="centerY" secondItem="lqQ-0a-AKG" secondAttribute="centerY" id="Qtd-Vq-nZ6"/>
+                            <constraint firstItem="ZhT-CW-iMe" firstAttribute="height" secondItem="MPj-om-ixh" secondAttribute="height" id="gIz-n7-t0v"/>
+                            <constraint firstItem="ZhT-CW-iMe" firstAttribute="centerX" secondItem="lqQ-0a-AKG" secondAttribute="centerX" id="xUt-ed-tun"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lqQ-0a-AKG"/>
+                    </view>
+                    <connections>
+                        <outlet property="CustonTableView" destination="ZhT-CW-iMe" id="hjx-xR-Lpf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdu-ZX-Or5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="205"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="QhG-Hg-sPv">
@@ -203,6 +252,13 @@
                                     <action selector="signupPressed:" destination="rPo-B2-UoU" eventType="touchUpInside" id="ww9-Gm-GIa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LvH-Pi-mg0">
+                                <rect key="frame" x="48" y="227" width="279" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84957909399999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ZRJ-LT-Tqh"/>
@@ -210,13 +266,15 @@
                     <connections>
                         <outlet property="backgroundImage" destination="1wG-K2-Vto" id="bSX-5j-1D5"/>
                         <outlet property="emailTextField" destination="aj7-2P-XAz" id="c4g-KJ-JML"/>
+                        <outlet property="errorLbl" destination="LvH-Pi-mg0" id="fMH-8B-oNb"/>
                         <outlet property="nameTextField" destination="cTX-Lh-0BY" id="k8n-7H-6Ge"/>
                         <outlet property="passwordTextField" destination="DSK-Bd-Uj0" id="EQe-gw-5yu"/>
+                        <segue destination="b48-h5-37K" kind="show" identifier="fromSignup" id="XkJ-OG-Rdb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOR-Wd-5th" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238" y="730"/>
+            <point key="canvasLocation" x="1237.5999999999999" y="571.66416791604206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="htY-mj-RJb">
@@ -241,4 +299,7 @@
     <resources>
         <image name="bg2" width="1922" height="1125"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XkJ-OG-Rdb"/>
+    </inferredMetricsTieBreakers>
 </document>

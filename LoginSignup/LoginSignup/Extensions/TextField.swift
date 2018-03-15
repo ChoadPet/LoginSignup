@@ -11,7 +11,6 @@ import UIKit
 
 extension UITextField {
     func customTextField() -> Void {
-//        self.layer.cornerRadius = 20.0
         self.layer.borderWidth = 1.7
         self.layer.borderColor = UIColor.dimBlue.cgColor
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 25.0, height: 2.0))

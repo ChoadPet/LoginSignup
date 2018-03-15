@@ -13,6 +13,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var errorLbl: UILabel!
+    
+    var user = User()
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -25,13 +28,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        errorLbl.isHidden = true
         backgroundImage.clipsToBounds = true
         emailTextField.customTextField()
         passwordTextField.customTextField()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        errorLbl.isHidden = true
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     // MARK: - Actions
     @IBAction func loginPressed(_ sender: UIButton) {
+        if !(emailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
+            user.email = emailTextField.text!
+            user.password = passwordTextField.text!
+            NetworkManager.loginMethod(forUser: user, completion: { [weak self] (success, message) in
+                guard let strongSelf = self else { return }
+                if !success {
+                    strongSelf.errorLbl.isHidden = false
+                    strongSelf.errorLbl.text = message
+                } else {
+                    DispatchQueue.main.async {
+                        strongSelf.errorLbl.isHidden = true
+                        strongSelf.performSegue(withIdentifier: "fromLogin", sender: self)
+                    }
+                }
+            })
+        } else {
+            errorLbl.isHidden = false
+            errorLbl.text = "Email/password can't be empty!"
+        }
+        
     }
     
     // MARK: - Keyboard hidding
