@@ -46,7 +46,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if !(emailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             user.email = emailTextField.text!
             user.password = passwordTextField.text!
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             NetworkManager.loginMethod(forUser: user, completion: { [weak self] (success, message) in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 guard let strongSelf = self else { return }
                 if !success {
                     strongSelf.errorLbl.isHidden = false

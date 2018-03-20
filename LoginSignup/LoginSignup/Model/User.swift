@@ -8,9 +8,10 @@
 
 import Foundation
 
-class User {
+struct User {
     
     var email = String()
     var password = String()
     var name = String()
+    
 }

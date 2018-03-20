@@ -52,14 +52,15 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             user.name = nameTextField.text!
             user.email = emailTextField.text!
             user.password = passwordTextField.text!
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             NetworkManager.registrationMethod(forUser: user, completion: { [weak self] (success, error) in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 guard let strongSelf = self else { return }
                 if !success {
                     strongSelf.errorLbl.text = error
                     strongSelf.errorLbl.isHidden = false
                 } else {
                     DispatchQueue.main.async {
-//                        strongSelf.errorLbl.isHidden = true
                         strongSelf.performSegue(withIdentifier: "fromSignup", sender: self)
                     }
                 }
